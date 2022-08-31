@@ -1,0 +1,6 @@
+set term png
+set output "plots/640_patches.png"
+set key autotitle columnheader
+set datafile separator ','
+set autoscale;
+plot '~/PSC/Scripts/patch_640/1_node_times' using 2:1 with lines title '1 Node', '~/PSC/Scripts/patch_640/2_node_times' using 2:1 with lines title '2 Nodes', '~/PSC/Scripts/patch_640/3_node_times' using 2:1 with lines title '3 Nodes', '~/PSC/Scripts/patch_640/4_node_times' using 2:1 with lines title '4 Node', '~/PSC/Scripts/patch_640/5_node_times' using 2:1 with lines title '5 Nodes', '~/PSC/Scripts/patch_640/10_node_times' using 2:1 with lines title '10 Nodes'

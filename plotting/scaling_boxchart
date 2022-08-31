@@ -1,0 +1,11 @@
+set key autotitle columnheader
+set boxwidth 0.5
+set style fill solid
+set datafile separator ','
+set terminal dumb size 120, 30; set autoscale;
+plot '~/PSC/Scripts/patch_280/1_node_times' using 2:1:xtic(2) with boxes
+plot '~/PSC/Scripts/patch_280/2_node_times' using 2:1:xtic(2) with boxes
+plot '~/PSC/Scripts/patch_280/3_node_times' using 2:1:xtic(2) with boxes
+plot '~/PSC/Scripts/patch_280/4_node_times' using 2:1:xtic(2) with boxes
+plot '~/PSC/Scripts/patch_280/5_node_times' using 2:1:xtic(2) with boxes
+plot '~/PSC/Scripts/patch_280/10_node_times' using 2:1:xtic(2) with boxes
