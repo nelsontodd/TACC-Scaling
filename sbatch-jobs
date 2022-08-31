@@ -1,0 +1,6 @@
+sbatch scaling_sbatch_scripts/scaling --time=240 --time-min=180 > 1-node-err 2>&1
+sbatch scaling_sbatch_scripts/2_node_scaling --time=240 --time-min=180 > 2-node-err 2>&1
+sbatch scaling_sbatch_scripts/3_node_scaling --time=240 --time-min=180 > 3-node-err 2>&1
+sbatch scaling_sbatch_scripts/4_node_scaling --time=240 --time-min=180 > 4-node-err 2>&1
+sbatch scaling_sbatch_scripts/5_node_scaling --time=240 --time-min=180 > 5-node-err 2>&1
+sbatch scaling_sbatch_scripts/10_node_scaling --time=240 --time-min=180 > 10-node-err 2>&1

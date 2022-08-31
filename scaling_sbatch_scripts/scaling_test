@@ -1,0 +1,28 @@
+#!/bin/bash
+#SBATCH -J test-scaling		# Job name
+#SBATCH -o test-scaling-%j.out   # Name of stdout output file (%j expands to jobId)
+#SBATCH -e test-scaling-%j.err   # Name of error output file
+#SBATCH -p normal		# Queue name
+#SBATCH -N 1                  # Total number of cores requested (64 cores/node, 4 threads/core)
+#SBATCH -n 64                 # Total number of mpi tasks requested
+#SBATCH -t 2:00:00           # Run time (hh:mm:ss)
+#SBATCH --mail-user=nelsonmorrow@utexas.edu
+#SBATCH --mail-type=begin
+#SBATCH --mail-type=end
+#SBATCH -A relplasmas
+
+
+module load launcher
+RAD=250e-9
+
+EXE=psc_test_windowLL
+WORKDIR=$SCRATCH/build/src
+mkdir $WORKDIR/data
+
+export LAUNCHER_WORKDIR=$HOME/PSC/Scripts
+export LAUNCHER_JOB_FILE=scaling
+
+nicell=100
+echo "nicell $nicell" > $SCRATCH/test_scaling_script_out
+echo "name, avg, min, max, total, timestep, Cores" >> $SCRATCH/test_scaling_script_out
+{ export IBRUN_TASKS_PER_NODE=64 && let NUM_CORES=$IBRUN_TASKS_PER_NODE*$SLURM_NNODES && ibrun $WORKDIR/$EXE --nicell $nicell --outdir $WORKDIR/data | grep "time entire step" >> $SCRATCH/test_scaling_script_out; }
